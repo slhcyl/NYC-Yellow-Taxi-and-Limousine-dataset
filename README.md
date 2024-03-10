@@ -43,7 +43,7 @@ Output mean and median of cost, price and passenger counts by payment type, year
   docker run -p 8888:8888 my-custom-pyspark-notebook
   ```
 * Navigate to the URL and paste it in the Chrome, create a python notebook, you can copy my pyspark code in this notebook.
-* Code 1: NYC T&L Yellow Spark.ipynb
+* Code 1: [NYC T&L Yellow Spark.ipynb](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20Spark.ipynb)
   * Due to the size of dataset (1.5B records) and the resources available in my local environment (windows laptop), processing a large dataset on a Windows laptop using Docker led to performance and resource constraints where I don't have resources to run the job in cluster mode on distributed environment to utilize multiple nodes for parallel processing. I created a separate code to run a sample of 5 records, please see Code 2:
 * Code 2: NYC T&L Yellow Spark Sample.ipynb
   * Output parquet files:
