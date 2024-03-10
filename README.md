@@ -12,11 +12,7 @@ Output mean and median of cost, price and passenger counts by payment type, year
 
 ## Implementation Methods:
 ### 1. Use Python and Pandas Dataframe:
-* Ensure the `azureml.opendatasets` package is installed before running the code.
-  ```
-  pip install azureml.opendatasets
-  ```
-* Source Code used to read the dataset in my code file:
+* Source Code used to read the dataset but modified in my code file, please see the [code link](https://learn.microsoft.com/en-us/azure/open-datasets/dataset-taxi-yellow?tabs=pyspark):
   ```
   # This is a package in preview.
   from azureml.opendatasets import NycTlcYellow
@@ -32,11 +28,33 @@ Output mean and median of cost, price and passenger counts by payment type, year
   
   nyc_tlc_df.info()
   ```
+* Ensure the `azureml.opendatasets` package is installed before running the code.
+  ```
+  pip install azureml.opendatasets
+  ```
 * My Code: [NYC T&L Yellow Pandas.ipynb](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20Pandas.ipynb)
 * Output csv file:
   * [NYC T&L Yellow mean and median output 2009 to 2018.csv](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20mean%20and%20median%20output%202009%20to%202018.csv)
 
 ### 2. Use Python, Pyspark and Spark Dataframe:
+* Source Code used to read the dataset but modified in my code file, please see the [code link](https://learn.microsoft.com/en-us/azure/open-datasets/dataset-taxi-yellow?tabs=pyspark)::
+  ```
+  # Azure storage access info
+  blob_account_name = "azureopendatastorage"
+  blob_container_name = "nyctlc"
+  blob_relative_path = "yellow"
+  blob_sas_token = "r"
+  
+  # Allow SPARK to read from Blob remotely
+  wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
+  spark.conf.set(
+    'fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name),
+    blob_sas_token)
+  print('Remote blob path: ' + wasbs_path)
+  
+  # SPARK read parquet, note that it won't load any data yet by now
+  df = spark.read.parquet(wasbs_path)
+  ```
 * For easiest installation of pyspark and the hadoop azure dependencies on Windows, Docker is recommended.
 * Setup Docker Desktop, you can follow this [article](https://towardsdatascience.com/apache-spark-on-windows-a-docker-approach-4dd05d8a7147) to install it.
 * Check Docker Installation by running the following code in PowerShell:
