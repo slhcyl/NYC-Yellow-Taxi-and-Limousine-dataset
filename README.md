@@ -16,7 +16,23 @@ Output mean and median of cost, price and passenger counts by payment type, year
   ```
   pip install azureml.opendatasets
   ```
-* Code: [NYC T&L Yellow Pandas.ipynb](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20Pandas.ipynb)
+* Source Code used to read the dataset in my code file:
+  ```
+  # This is a package in preview.
+  from azureml.opendatasets import NycTlcYellow
+  
+  from datetime import datetime
+  from dateutil import parser
+  
+  
+  end_date = parser.parse('2018-06-06')
+  start_date = parser.parse('2018-05-01')
+  nyc_tlc = NycTlcYellow(start_date=start_date, end_date=end_date)
+  nyc_tlc_df = nyc_tlc.to_pandas_dataframe()
+  
+  nyc_tlc_df.info()
+  ```
+* My Code: [NYC T&L Yellow Pandas.ipynb](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20Pandas.ipynb)
 * Output csv file:
   * [NYC T&L Yellow mean and median output 2009 to 2018.csv](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20mean%20and%20median%20output%202009%20to%202018.csv)
 
