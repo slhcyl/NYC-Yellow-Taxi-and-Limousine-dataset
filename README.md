@@ -18,7 +18,7 @@ Output mean and median of cost, price and passenger counts by payment type, year
   ```
 * Code: [NYC T&L Yellow Pandas.ipynb](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20Pandas.ipynb)
 * Output csv file:
-  * NYC T&L Yellow mean and median output 2009 to 2018.csv
+  * [NYC T&L Yellow mean and median output 2009 to 2018.csv](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20mean%20and%20median%20output%202009%20to%202018.csv)
 
 ### 2. Use Python, Pyspark and Spark Dataframe:
 * For easiest installation of pyspark and the hadoop azure dependencies on Windows, Docker is recommended.
