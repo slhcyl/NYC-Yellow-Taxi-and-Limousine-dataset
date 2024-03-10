@@ -16,7 +16,9 @@ Output mean and median of cost, price and passenger counts by payment type, year
   ```
   pip install azureml.opendatasets
   ```
-* code: NYC T&L Yellow Pandas.ipynb
+* Code: NYC T&L Yellow Pandas.ipynb
+* Output csv file:
+  * NYC T&L Yellow mean and median output 2009 to 2018.csv
 
 ### 2. Use Python, Pyspark and Spark Dataframe:
 * Due to the limitation of Windows to install hadoop packages and libraries, I was unable to run my code locally. Instead, I used Docker to run my code.
@@ -29,7 +31,7 @@ Output mean and median of cost, price and passenger counts by payment type, year
   ```
   docker run -p 8888:8888 -e JUPYTER_ENABLE_LAB=yes --name pyspark jupyter/pyspark-notebook
   ```
-* Create a docker file called 'Dockerfile' in the Visual Studio, please don't change the file, paste the following code (Add the Azure Hadoop and Azure Storage JARs) to this file and save it:
+* Create a docker file called 'Dockerfile' in the Visual Studio, please don't change the file, paste the following code to this file and save it:
   ```
   FROM jupyter/pyspark-notebook
   # Add the Azure Hadoop and Azure Storage JARs
@@ -38,6 +40,15 @@ Output mean and median of cost, price and passenger counts by payment type, year
   ADD https://repo1.maven.org/maven2/com/microsoft/azure/azure-storage/8.6.6/azure-storage-8.6.6.jar $SPARK_JARS_DIR
   ```
 * Open your integrated terminal, run the following code, please don't remove '.' which is important:
-  >docker build -t my-custom-pyspark-notebook .
-  >docker run -p 8888:8888 my-custom-pyspark-notebook
-* Navigate to the URL and paste it in the Chrome, create a python notebook to run my code.
+  ```
+  docker build -t my-custom-pyspark-notebook .
+  ```
+  ```
+  docker run -p 8888:8888 my-custom-pyspark-notebook
+  ```
+* Navigate to the URL and paste it in the Chrome, create a python notebook, you can copy my pyspark code in this notebook.
+* Code 1: NYC T&L Yellow Spark.ipynb
+  * Due to the limitation of Docker, it was unable to compute the whole 1.5B records to generate the parquet file. I created a separate code to run a sample of 5 records, please see Code 2:
+* Code 2: NYC T&L Yellow Spark Sample.ipynb
+  * Output parquet files:
+    * part-00000-13657153-c709-4034-a595-0bb7391af309-c000.snappy.parquet
