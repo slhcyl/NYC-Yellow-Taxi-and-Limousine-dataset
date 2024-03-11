@@ -11,6 +11,8 @@ This dataset contains historical records accumulated from 2009 to 2018. You can 
 Output mean and median of cost, price and passenger counts by payment type, year and month
 
 ## Implementation Methods:
+Due to the substantial dataset size (50 GB), Spark DataFrame is recommended for its ability to process and analyze large-scale data in parallel across a cluster of machines. However, my Windows laptop has performance and resource constraints that won't fully utilize Spark scalability. Therefore, I implemented two methods (Pandas and Spark) to generate the desired output.
+
 ### 1. Use Python and Pandas Dataframe:
 * Source Code used to read the dataset but modified in my code file, please see the [code link](https://learn.microsoft.com/en-us/azure/open-datasets/dataset-taxi-yellow?tabs=pyspark):
   ```
@@ -32,7 +34,7 @@ Output mean and median of cost, price and passenger counts by payment type, year
   ```
   pip install azureml.opendatasets
   ```
-* [Code: NYC T&L Yellow Pandas.ipynb](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20Pandas.ipynb)
+* My Code: [NYC T&L Yellow Pandas.ipynb](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20Pandas.ipynb)
 * Output csv file:
   * [NYC T&L Yellow mean and median output 2009 to 2018.csv](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20mean%20and%20median%20output%202009%20to%202018.csv)
 
@@ -55,8 +57,7 @@ Output mean and median of cost, price and passenger counts by payment type, year
   # SPARK read parquet, note that it won't load any data yet by now
   df = spark.read.parquet(wasbs_path)
   ```
-* For easiest installation of pyspark and the hadoop azure dependencies on Windows, Docker is recommended.
-* Setup Docker Desktop, you can follow this [article](https://towardsdatascience.com/apache-spark-on-windows-a-docker-approach-4dd05d8a7147) to install it.
+* To facilitate running PySpark on Windows, Docker is recommended, follow this [article](https://towardsdatascience.com/apache-spark-on-windows-a-docker-approach-4dd05d8a7147) for Docker Desktop installation.
 * Check Docker Installation by running the following code in PowerShell:
   ```
   docker run hello-world
@@ -69,16 +70,18 @@ Output mean and median of cost, price and passenger counts by payment type, year
   ADD https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-azure/3.3.6/hadoop-azure-3.3.6.jar $SPARK_JARS_DIR
   ADD https://repo1.maven.org/maven2/com/microsoft/azure/azure-storage/8.6.6/azure-storage-8.6.6.jar $SPARK_JARS_DIR
   ```
-* Open your integrated terminal, run the following code, please don't remove '.' which is important:
+* Docker Build:
+  * Open your integrated terminal, run the following code, please don't remove '.' which is important:
   ```
   docker build -t my-custom-pyspark-notebook .
   ```
+* Docker Run:
   ```
   docker run -p 8888:8888 my-custom-pyspark-notebook
   ```
 * Navigate to the URL and paste it in the Chrome, create a python notebook, you can copy my pyspark code in this notebook.
-* [Code 1: NYC T&L Yellow Spark.ipynb](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20Spark.ipynb)
-  * Due to the size of dataset (1.5B records) and the resources available in my local environment (windows laptop), processing a large dataset on a Windows laptop using Docker led to performance and resource constraints where I don't have resources to run the job in cluster mode on distributed environment to allow Spark to utilize multiple nodes for parallel processing. Therefore, to prove my code is functional, I sampled the dataset of 5 records to be able to generate a parquet output using my code. please see [Code 2](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20Spark%20Sample.ipynb):
-* [Code 2: NYC T&L Yellow Spark Sample.ipynb](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20Spark%20Sample.ipynb)
+* My Code 1: [NYC T&L Yellow Spark.ipynb](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20Spark.ipynb)
+  * Due to the size of dataset (1.5B records) and the resources available in my local environment (windows laptop), processing a large dataset on a Windows laptop using Docker led to performance and resource constraints where I can't run the Spark jobs in cluster mode on distributed environment to allow Spark to utilize multiple nodes for parallel processing. Therefore, to prove my code is functional, I sampled the dataset of 5 records to be able to generate a parquet output using my code. please see [Code 2](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20Spark%20Sample.ipynb):
+* My Code 2: [NYC T&L Yellow Spark Sample.ipynb](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20Spark%20Sample.ipynb)
   * Output parquet files:
     * [part-00000-13657153-c709-4034-a595-0bb7391af309-c000.snappy.parquet](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/part-00000-13657153-c709-4034-a595-0bb7391af309-c000.snappy.parquet)
