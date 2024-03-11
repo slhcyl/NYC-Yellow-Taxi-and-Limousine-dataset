@@ -35,8 +35,8 @@ Due to the substantial dataset size (50 GB), Spark DataFrame is recommended for 
   pip install azureml.opendatasets
   ```
 * My Code: [NYC T&L Yellow Pandas.ipynb](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20Pandas.ipynb)
-* Output csv file:
-  * [NYC T&L Yellow mean and median output 2009 to 2018.csv](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20mean%20and%20median%20output%202009%20to%202018.csv)
+  * Output csv file:
+    [NYC T&L Yellow mean and median output 2009 to 2018.csv](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20mean%20and%20median%20output%202009%20to%202018.csv)
 
 ### 2. Use Python, Pyspark and Spark Dataframe:
 * Source Code used to read the dataset but modified in my code file, please see the [code link](https://learn.microsoft.com/en-us/azure/open-datasets/dataset-taxi-yellow?tabs=pyspark)::
@@ -84,4 +84,4 @@ Due to the substantial dataset size (50 GB), Spark DataFrame is recommended for 
   * Due to the size of dataset (1.5B records) and the resources available in my local environment (windows laptop), processing a large dataset on a Windows laptop using Docker led to performance and resource constraints where it didn't allow Spark to utilize its distributed computing, parallel processing and scability. Therefore, to prove my code is functional, I sampled the dataset of 5 records to be able to generate a parquet output using my code. please see [Code 2](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20Spark%20Sample.ipynb):
 * My Code 2: [NYC T&L Yellow Spark Sample.ipynb](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20Spark%20Sample.ipynb)
   * Output parquet files:
-    * [part-00000-13657153-c709-4034-a595-0bb7391af309-c000.snappy.parquet](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/part-00000-13657153-c709-4034-a595-0bb7391af309-c000.snappy.parquet)
+    [part-00000-13657153-c709-4034-a595-0bb7391af309-c000.snappy.parquet](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/part-00000-13657153-c709-4034-a595-0bb7391af309-c000.snappy.parquet)
