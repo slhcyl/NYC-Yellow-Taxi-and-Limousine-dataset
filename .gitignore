@@ -3,3 +3,7 @@ NYC test  output.csv
 NYC Taxi and Limousine yellow dataset developing code.ipynb
 text.ipynb
 verify.csv
+venv3.10/Lib/site-packages/__pycache__/decorator.cpython-310.pyc
+*.typed
+venv3.10/Lib/site-packages/__pycache__/jupyter.cpython-310.pyc
+/venv3.10
