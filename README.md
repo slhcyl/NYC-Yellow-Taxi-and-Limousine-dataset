@@ -39,7 +39,7 @@ Due to the substantial dataset size (50 GB), Spark DataFrame is recommended for 
     [NYC T&L Yellow mean and median output 2009 to 2018.csv](https://github.com/slhcyl/NYC-Yellow-Taxi-and-Limousine-dataset/blob/main/NYC%20T%26L%20Yellow%20mean%20and%20median%20output%202009%20to%202018.csv)
 
 ### 2. Use Python, Pyspark and Spark Dataframe:
-* Source Code used to read the dataset but modified in my code file, please see the [code link](https://learn.microsoft.com/en-us/azure/open-datasets/dataset-taxi-yellow?tabs=pyspark)::
+* Source Code used to read the dataset but modified in my code file, please see the [code link](https://learn.microsoft.com/en-us/azure/open-datasets/dataset-taxi-yellow?tabs=pyspark):
   ```
   # Azure storage access info
   blob_account_name = "azureopendatastorage"
